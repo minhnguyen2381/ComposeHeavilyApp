@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="all" severity="ignore" />
+    <issue id="UnusedResources" severity="error" />
+    <issue id="DuplicateStrings" severity="error" />
+    <issue id="DuplicateActivity" severity="error" />
+    <issue id="IconDuplicates" severity="error" />
+    <issue id="HardcodedText" severity="warning" />
+</lint>

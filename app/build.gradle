@@ -1,0 +1,141 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+
+}
+
+android {
+    namespace 'com.nguyennhatminh614.composeheavilyapp'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.nguyennhatminh614.composeheavilyapp"
+        minSdk 24
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
+    signingConfigs{
+        release {
+            storeFile file("key/release.jks")
+            storePassword "minh@123"
+            keyAlias "release"
+            keyPassword "minh@123"
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+
+        }
+    }
+
+
+    flavorDimensions "default"
+    productFlavors {
+        appDev {
+            buildConfigField "String", "BASE_URL", "\"https://hf-android-app.s3-eu-west-1.amazonaws.com/android-test/\""
+
+            manifestPlaceholders = [ ad_app_id:"ca-app-pub-3940256099942544~3347511713"]
+            buildConfigField "String", "ad_interstitial_splash", "\"ca-app-pub-3940256099942544/1033173712\""
+            buildConfigField "String", "ad_appopen_resume", "\"ca-app-pub-3940256099942544/3419835294\""
+            buildConfigField "Boolean", "AppDev", "true"
+        }
+        appProduct {
+            buildConfigField "String", "BASE_URL", "https://hf-android-app.s3-eu-west-1.amazonaws.com/android-test/"
+
+            manifestPlaceholders = [ ad_app_id:"ca-app-pub-3940256099942544~3347511713"]
+            buildConfigField "String", "ad_interstitial_splash", "\"ca-app-pub-3940256099942544/1033173712\""
+            buildConfigField "String", "ad_appopen_resume", "\"ca-app-pub-3940256099942544/3419835294\""
+            buildConfigField "Boolean", "AppDev", "false"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.2.0'
+    }
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+    lintOptions {
+        lintConfig file("lint.xml")
+        checkReleaseBuilds false
+        abortOnError true
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.1'
+    implementation 'androidx.activity:activity-compose:1.3.1'
+    implementation 'androidx.compose.material:material:1.2.0'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_ui_version"
+    debugImplementation "androidx.compose.ui:ui-tooling:$compose_ui_version"
+    debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_ui_version"
+
+
+    //compose
+    implementation "androidx.compose.ui:ui:1.3.3"
+    implementation "androidx.compose.material:material:1.3.1"
+    implementation "androidx.compose.ui:ui-tooling-preview:1.3.3"
+    implementation 'androidx.activity:activity-compose:1.6.1'
+    implementation "androidx.compose.runtime:runtime-livedata:1.3.3"
+
+    debugImplementation "androidx.compose.ui:ui-tooling:1.3.3"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1"
+    implementation "androidx.navigation:navigation-compose:2.6.0-alpha04"
+
+    //hilt DI
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-compiler:$hilt_version"
+    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
+
+    //lifecycle
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.1'
+
+    //coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version"
+
+    //retrofit
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
+    implementation "com.squareup.moshi:moshi:$moshiVersion"
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttpInterceptorVersion"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:1.7.0"
+
+    //room
+    implementation "androidx.room:room-runtime:$room_db"
+    kapt "androidx.room:room-compiler:$room_db"
+    implementation 'com.google.code.gson:gson:2.8.2'
+
+    //ads
+    implementation 'androidx.multidex:multidex:2.0.1'
+
+}

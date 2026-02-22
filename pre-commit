@@ -1,0 +1,12 @@
+chmod +x gradlew
+./gradlew clean
+echo "precommit - start lint check"
+./gradlew lint
+RESULT=$?
+echo "precommit - start lint result $RESULT"
+if [[ "$RESULT" = 0 ]] ; then
+    echo "precommit - lint success."
+else
+    echo 1>&2 "precommit - lint fail"
+    exit 1
+fi
