@@ -46,9 +46,11 @@ android {
     flavorDimensions "default"
     productFlavors {
         appDev {
+            buildConfigField "String", "BASE_URL", '"https://api-dev.example.com/"'
             buildConfigField "Boolean", "AppDev", "true"
         }
         appProduct {
+            buildConfigField "String", "BASE_URL", '"https://api-product.example.com/"'
             buildConfigField "Boolean", "AppDev", "false"
         }
     }

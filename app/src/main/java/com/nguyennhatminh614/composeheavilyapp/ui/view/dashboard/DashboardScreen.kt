@@ -28,15 +28,11 @@ import com.patrykandpatrick.vico.compose.axis.vertical.rememberStartAxis
 import com.patrykandpatrick.vico.compose.chart.Chart
 import com.patrykandpatrick.vico.compose.chart.line.lineChart
 import com.patrykandpatrick.vico.compose.component.shape.shader.fromBrush
-import com.patrykandpatrick.vico.compose.component.shapeComponent
 import com.patrykandpatrick.vico.compose.component.textComponent
-import com.patrykandpatrick.vico.core.chart.line.LineChart
 import com.patrykandpatrick.vico.core.component.shape.Shapes
 import com.patrykandpatrick.vico.core.component.shape.shader.DynamicShaders
 import com.patrykandpatrick.vico.core.entry.ChartEntryModelProducer
 import com.patrykandpatrick.vico.core.entry.FloatEntry
-import com.patrykandpatrick.vico.core.chart.decoration.ThresholdLine
-import com.patrykandpatrick.vico.core.chart.decoration.ThresholdLine.ThresholdLabelPosition
 
 @Composable
 fun DashboardScreen(
@@ -106,7 +102,7 @@ fun DashboardHeader() {
 
 @Composable
 fun TimeFilterTabs(selectedFilter: TimeFilter, onFilterSelected: (TimeFilter) -> Unit) {
-    val filters = remember { TimeFilter.values().toList() } // Kotlin 1.7-1.8 safe
+    val filters = remember { TimeFilter.entries } // Kotlin 1.7-1.8 safe
 
     Row(
         modifier = Modifier

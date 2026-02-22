@@ -24,6 +24,7 @@ import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import com.nguyennhatminh614.composeheavilyapp.data.Resource
 import com.nguyennhatminh614.composeheavilyapp.ui.theme.BaseTheme
+import com.nguyennhatminh614.composeheavilyapp.R
 import com.nguyennhatminh614.composeheavilyapp.ui.base.BaseViewModel
 
 abstract class BaseComponentActivity<VM : BaseViewModel> : ComponentActivity() {
