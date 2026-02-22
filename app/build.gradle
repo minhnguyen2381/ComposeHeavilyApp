@@ -45,19 +45,9 @@ android {
     flavorDimensions "default"
     productFlavors {
         appDev {
-            buildConfigField "String", "BASE_URL", "\"https://hf-android-app.s3-eu-west-1.amazonaws.com/android-test/\""
-
-            manifestPlaceholders = [ ad_app_id:"ca-app-pub-3940256099942544~3347511713"]
-            buildConfigField "String", "ad_interstitial_splash", "\"ca-app-pub-3940256099942544/1033173712\""
-            buildConfigField "String", "ad_appopen_resume", "\"ca-app-pub-3940256099942544/3419835294\""
             buildConfigField "Boolean", "AppDev", "true"
         }
         appProduct {
-            buildConfigField "String", "BASE_URL", "https://hf-android-app.s3-eu-west-1.amazonaws.com/android-test/"
-
-            manifestPlaceholders = [ ad_app_id:"ca-app-pub-3940256099942544~3347511713"]
-            buildConfigField "String", "ad_interstitial_splash", "\"ca-app-pub-3940256099942544/1033173712\""
-            buildConfigField "String", "ad_appopen_resume", "\"ca-app-pub-3940256099942544/3419835294\""
             buildConfigField "Boolean", "AppDev", "false"
         }
     }
